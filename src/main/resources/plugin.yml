@@ -1,0 +1,25 @@
+name: KillEffects
+version: 1.0.0
+main: com.Jakuny.killeffects.KillEffects
+api-version: '1.21'
+authors: [ Jakuny ]
+description: >
+  A powerful and customizable kill effects system. 
+  Allows players to collect and switch between spectacular visual 
+  and sound effects that play upon killing another player.
+
+commands:
+  killeffects:
+    description: Opens the kill effects selection menu.
+    usage: /killeffects
+    aliases:
+      - ke
+      - effects
+
+permissions:
+  killeffects.admin:
+    description: Provides access to the plugin's admin commands.
+    default: op
+  killeffects.gui:
+    description: Allows the player to open the effects menu.
+    default: true

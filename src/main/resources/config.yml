@@ -1,0 +1,58 @@
+# ======================================================
+# KillEffects - Plugin Configuration
+# Developer: Jakuny
+# ======================================================
+
+# --- Global Settings ---
+
+# Global plugin prefix in chat
+prefix: "&8[&6KillEffects&8] &r"
+
+# --- GUI Menu Settings ---
+
+gui:
+  # Title of the main effects menu
+  title: "&0Select Kill Effect"
+  # Sound when opening the menu
+  open-sound: "minecraft:block.chest.open"
+  # Sound when an effect is successfully selected
+  select-sound: "minecraft:entity.experience_orb.pickup"
+  # Sound when trying to select a locked effect
+  locked-sound: "minecraft:entity.villager.no"
+
+# --- New Player Defaults ---
+
+default-player-settings:
+  # Are visual effects enabled on first join
+  effects-enabled: true
+  # Are effect sounds enabled on first join
+  sounds-enabled: true
+  # Default effect ID (must match a filename in /effects/ without .yml)
+  active-effect: "lightning"
+
+# --- Plugin Messages ---
+# Use %prefix% for the global prefix
+# Use color codes (e.g., &a - green, &c - red)
+
+messages:
+  no-permission: "%prefix%&cYou don't have permission to do this!"
+  only-players: "&cThis command can only be executed by players!"
+
+  # Toggle Commands
+  effects-on: "%prefix%&aKill effects have been enabled."
+  effects-off: "%prefix%&cKill effects have been disabled."
+  sounds-on: "%prefix%&aEffect sounds have been enabled."
+  sounds-off: "%prefix%&cEffect sounds have been disabled."
+
+  # Effect Selection
+  effect-selected: "%prefix%&fYou have selected: &6%name%"
+  effect-locked: "%prefix%&cThis effect is locked! Purchase it in our store."
+
+  # Admin Commands
+  reload-success: "%prefix%&aConfiguration and effects reloaded successfully!"
+  data-loading: "%prefix%&eLoading your data, please wait..."
+# --- Настройки эффектов ---
+# Здесь можно задать общие параметры, если они понадобятся.
+effects-settings:
+  # Максимальная дистанция, на которой игроки будут видеть эффекты (опционально)
+  view-distance: 64
