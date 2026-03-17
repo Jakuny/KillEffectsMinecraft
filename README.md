@@ -1,31 +1,52 @@
 # KillEffects
 
-**KillEffects** — это мощная и гибкая система косметических эффектов для серверов Minecraft (Paper/Spigot 1.21.1). Она позволяет игрокам коллекционировать и использовать зрелищные визуальные и звуковые эффекты, которые проигрываются сразу после убийства другого игрока.
+**KillEffects** is a high-performance, fully customizable cosmetic system for Minecraft servers (Paper/Spigot 1.21.1+). It allows players to collect and play spectacular visual and sound effects after defeating their opponents.
 
-## 🚀 Основные возможности
-*   **Свой движок эффектов:** Создавайте любые анимации через простые YAML-файлы.
-*   **Геометрия частиц:** Поддержка кругов, спиралей и "текстовых" частиц (пиксельный арт из огня/дыма).
-*   **Современные голограммы:** Использование Entity Displays (1.21.1) для плавного отображения текста над местом смерти.
-*   **Гибкая настройка:** Каждый эффект — это отдельный файл с настройками звуков, частиц и прав доступа.
-*   **Интерактивный GUI:** Удобное меню выбора эффектов с поддержкой блокировки (можно продавать эффекты в донат-магазине).
-*   **Оптимизация:** Легковесный код, написанный с учетом производительности сервера.
+## 🌟 Features
+*   **Custom Effect Engine:** Create unlimited unique effects using simple YAML files.
+*   **Advanced Visuals:** Supports particles, sounds, geometric shapes (circles, spirals), and 1.21 `TextDisplay` holograms.
+*   **Monetization Ready:** Built-in permission system allows you to sell effects in your store.
+*   **Interactive GUI:** Intuitive menu (`/ke`) for players to preview and select effects.
+*   **Optimized:** Lightweight code designed for modern Paper/Spigot performance.
 
-## 📋 Команды
-| Команда | Описание | Право (Permission) |
+## 🎮 Commands
+| Command | Description | Permission |
 | :--- | :--- | :--- |
-| `/ke` | Открыть меню выбора эффектов | `killeffects.gui` |
-| `/ke toggle` | Вкл/Выкл визуальные эффекты | `killeffects.gui` |
-| `/ke sound` | Вкл/Выкл звуки эффектов | `killeffects.gui` |
-| `/ke reload` | Перезагрузить конфиги и эффекты | `killeffects.admin` |
+| `/ke` | Opens the effects selection menu | `killeffects.gui` |
+| `/ke toggle` | Toggle visual effects | `killeffects.gui` |
+| `/ke sound` | Toggle effect sounds | `killeffects.gui` |
+| `/ke reload` | Reload all configs and effects | `killeffects.admin` |
 
-## 🛠 Установка
-1. Поместите `KillEffects.jar` в папку `/plugins/`.
-2. Запустите сервер.
-3. Отредактируйте файлы эффектов в `/plugins/KillEffects/effects/`.
-4. Используйте `/ke reload` для применения изменений.
+## 🛠 Creating Custom Effects
+Create a new `.yml` file in `/plugins/KillEffects/effects/`. 
 
-## ⚙️ Создание эффектов
-Вы можете создавать свои эффекты, создавая `.yml` файлы в папке `effects/`. Используйте действия: `PLAY_SOUND`, `STRIKE_LIGHTNING`, `SPAWN_PARTICLE`, `PARTICLE_CIRCLE`, `PARTICLE_SPIRAL`, `PARTICLE_TEXT`, `TEXT_DISPLAY`.
+### Available Actions:
+- `PLAY_SOUND`: `sound` (e.g., `entity.witch.celebrate`), `volume`, `pitch`
+- `STRIKE_LIGHTNING`: Spawns lightning.
+- `SPAWN_PARTICLE`: `particle`, `count`, `speed`
+- `PARTICLE_CIRCLE`: `particle`, `radius`, `points`
+- `PARTICLE_SPIRAL`: `particle`, `radius`, `height`, `points`
+- `PARTICLE_TEXT`: `text`, `particle`, `scale`
+- `TEXT_DISPLAY`: `text`, `duration`
+
+### Example `ez_toxic.yml`:
+```yaml
+id: "ez_toxic"
+display-name: "&6🔥 EZ Toxic"
+gui-item: "minecraft:wither_skeleton_skull"
+permission: "killeffects.effect.ez"
+actions:
+  - type: PLAY_SOUND
+    sound: "minecraft:entity.witch.celebrate"
+    volume: 1.0
+    pitch: 1.2
+    delay: 0
+  - type: PARTICLE_TEXT
+    text: "EZ"
+    particle: "minecraft:flame"
+    scale: 0.25
+    delay: 5Ч
+```
 
 ---
 *Developed by Jakuny*
