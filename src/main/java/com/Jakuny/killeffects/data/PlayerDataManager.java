@@ -14,7 +14,6 @@ import java.util.UUID;
 public class PlayerDataManager {
 
     private final KillEffects plugin;
-    // Храним загруженные данные игроков в памяти, чтобы не читать файл каждый раз
     private final Map<UUID, PlayerData> playerDataMap = new HashMap<>();
     private final File dataFolder;
 
@@ -26,14 +25,12 @@ public class PlayerDataManager {
         }
     }
 
-    // Загружает данные игрока из файла в память
     public void loadPlayerData(Player player) {
         File playerFile = new File(dataFolder, player.getUniqueId() + ".yml");
         if (!playerFile.exists()) {
-            // Если файла нет, создаем новые данные и сохраняем их
             PlayerData data = new PlayerData();
             playerDataMap.put(player.getUniqueId(), data);
-            savePlayerData(player); // Сохраняем, чтобы файл создался
+            savePlayerData(player);
             return;
         }
 
@@ -47,7 +44,6 @@ public class PlayerDataManager {
         playerDataMap.put(player.getUniqueId(), data);
     }
 
-    // Сохраняет данные игрока из памяти в файл
     public void savePlayerData(Player player) {
         PlayerData data = playerDataMap.get(player.getUniqueId());
         if (data == null) return;
@@ -68,13 +64,11 @@ public class PlayerDataManager {
         }
     }
 
-    // Выгружает данные игрока из памяти (при выходе с сервера)
     public void unloadPlayerData(Player player) {
-        savePlayerData(player); // Сначала сохраняем
-        playerDataMap.remove(player.getUniqueId()); // Потом удаляем из памяти
+        savePlayerData(player);
+        playerDataMap.remove(player.getUniqueId());
     }
 
-    // Дает быстрый доступ к данным игрока
     public PlayerData getPlayerData(Player player) {
         return playerDataMap.get(player.getUniqueId());
     }
